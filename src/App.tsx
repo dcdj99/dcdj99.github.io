@@ -1,3 +1,7 @@
 export default function App() {
-  return <h1 className="text-2xl">darrenchow.me — coming soon</h1>;
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <h1 className="text-3xl font-serif">darrenchow.me — coming soon</h1>
+    </main>
+  );
 }
