@@ -26,7 +26,7 @@ function renderAt(path: string) {
 
 test("/ renders Home", () => {
   renderAt("/");
-  expect(screen.getByRole("heading", { name: /home/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 1, name: /darren/i })).toBeInTheDocument();
 });
 
 test("/projects renders Projects", () => {
@@ -41,5 +41,5 @@ test("/about renders About", () => {
 
 test("unknown path renders NotFound", () => {
   renderAt("/this-does-not-exist");
-  expect(screen.getByRole("heading", { name: /not found/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: /page not found/i })).toBeInTheDocument();
 });
