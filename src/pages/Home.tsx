@@ -3,22 +3,26 @@ import { site } from "../data/site";
 import { NowBlock } from "../components/NowBlock";
 import { ProjectGrid } from "../components/ProjectGrid";
 import { getFeaturedProjects } from "../lib/projects";
+import { InteractiveHero } from "../components/InteractiveHero";
 
 export default function Home() {
   const featured = getFeaturedProjects();
 
   return (
     <div className="px-6 max-w-5xl mx-auto">
-      <section className="py-20 sm:py-28">
-        <p className="font-mono text-xs uppercase tracking-widest opacity-60">Hello,</p>
-        <h1 className="mt-3 font-serif text-5xl sm:text-6xl leading-[1.05]">
-          I'm {site.name}.
-        </h1>
-        <p className="mt-6 max-w-prose text-lg leading-relaxed">{site.tagline}</p>
-        <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs">
-          <Link to="/projects" className="underline decoration-accent dark:decoration-accent-dark">see projects →</Link>
-          <Link to="/about" className="underline decoration-accent dark:decoration-accent-dark">about →</Link>
+      <section className="py-20 sm:py-24 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div>
+          <p className="font-mono text-xs uppercase tracking-widest opacity-60">Hello,</p>
+          <h1 className="mt-3 font-serif text-5xl sm:text-6xl leading-[1.05]">
+            I'm {site.name}.
+          </h1>
+          <p className="mt-6 max-w-prose text-lg leading-relaxed">{site.tagline}</p>
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs">
+            <Link to="/projects" className="underline decoration-accent dark:decoration-accent-dark">see projects →</Link>
+            <Link to="/about" className="underline decoration-accent dark:decoration-accent-dark">about →</Link>
+          </div>
         </div>
+        <InteractiveHero />
       </section>
 
       <section className="py-12">
