@@ -54,7 +54,7 @@ const DESTINATIONS: Destination[] = [
     size: 230,
     side: "left",
     copyStart: 900,
-    copyEnd: 2200,
+    copyEnd: 2000,
   },
   {
     id: "experience",
@@ -71,8 +71,8 @@ const DESTINATIONS: Destination[] = [
     top: -235,
     size: 250,
     side: "right",
-    copyStart: 2500,
-    copyEnd: 3700,
+    copyStart: 2350,
+    copyEnd: 3450,
   },
   {
     id: "projects",
@@ -89,8 +89,8 @@ const DESTINATIONS: Destination[] = [
     top: -400,
     size: 240,
     side: "left",
-    copyStart: 4000,
-    copyEnd: 5100,
+    copyStart: 3800,
+    copyEnd: 4900,
   },
 ];
 
@@ -508,7 +508,7 @@ export default function Home() {
           ...trigger({ end: `+=${SCROLL_TOTAL}` }),
           snap: {
             snapTo: (value) => {
-              const points = [0, 0.267, 0.534, 0.784, 0.956];
+              const points = [0, 0.25, 0.5, 0.75, 1.0];
               const restRadius = 0.045;
               for (const p of points) {
                 if (Math.abs(value - p) <= restRadius) return value;
@@ -667,7 +667,7 @@ export default function Home() {
         yPercent: -50,
         y: 0,
         ease: "power2.out",
-        scrollTrigger: trigger({ start: "+=5320", end: "+=450", scrub: 0.8 }),
+        scrollTrigger: trigger({ start: "+=5200", end: "+=500", scrub: 0.8 }),
       });
     }, scene);
 
