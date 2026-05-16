@@ -54,7 +54,7 @@ const DESTINATIONS: Destination[] = [
     size: 230,
     side: "left",
     copyStart: 900,
-    copyEnd: 2300,
+    copyEnd: 2200,
   },
   {
     id: "experience",
@@ -71,8 +71,8 @@ const DESTINATIONS: Destination[] = [
     top: -235,
     size: 250,
     side: "right",
-    copyStart: 2250,
-    copyEnd: 3850,
+    copyStart: 2500,
+    copyEnd: 3700,
   },
   {
     id: "projects",
@@ -89,8 +89,8 @@ const DESTINATIONS: Destination[] = [
     top: -400,
     size: 240,
     side: "left",
-    copyStart: 3800,
-    copyEnd: 5000,
+    copyStart: 4000,
+    copyEnd: 5100,
   },
 ];
 
@@ -508,21 +508,18 @@ export default function Home() {
           ...trigger({ end: `+=${SCROLL_TOTAL}` }),
           snap: {
             snapTo: (value) => {
-              const points = [0, 0.276, 0.526, 0.759, 0.957];
-              for (let i = 0; i < points.length - 1; i++) {
-                const a = points[i];
-                const b = points[i + 1];
-                const mid = (a + b) / 2;
-                const half = (b - a) * 0.2;
-                if (value > mid - half && value < mid + half) {
-                  return value < mid ? a : b;
-                }
+              const points = [0, 0.267, 0.534, 0.784, 0.956];
+              const restRadius = 0.045;
+              for (const p of points) {
+                if (Math.abs(value - p) <= restRadius) return value;
               }
-              return value;
+              return points.reduce((a, b) =>
+                Math.abs(b - value) < Math.abs(a - value) ? b : a
+              );
             },
-            duration: { min: 0.25, max: 0.55 },
+            duration: { min: 0.3, max: 0.6 },
             ease: "power2.inOut",
-            delay: 0.05,
+            delay: 0.1,
           },
         });
       }
@@ -618,7 +615,7 @@ export default function Home() {
         const copyTimeline = gsap.timeline({
           scrollTrigger: trigger({
             start: `+=${destination.copyStart}`,
-            end: `+=${destination.copyEnd - destination.copyStart + 520}`,
+            end: `+=${destination.copyEnd - destination.copyStart + 200}`,
             scrub: 0.9,
           }),
         });
@@ -904,8 +901,8 @@ export default function Home() {
           position: absolute;
           left: calc(50% + (var(--x) * 1vw));
           top: calc(var(--top) * 1vh);
-          width: var(--size);
-          height: var(--size);
+          width: clamp(140px, 30vmin, 440px);
+          height: clamp(140px, 30vmin, 440px);
           transform: translate(-50%, -50%);
           opacity: 0.34;
           will-change: transform, opacity, filter;
@@ -1206,6 +1203,14 @@ export default function Home() {
 
         .rocket svg {
           overflow: visible;
+          width: clamp(40px, 7vmin, 96px);
+          height: auto;
+        }
+
+        @media (max-width: 860px) {
+          .rocket svg {
+            width: clamp(36px, 11vmin, 72px);
+          }
         }
 
         .launch-pad {
@@ -1216,7 +1221,7 @@ export default function Home() {
           position: absolute;
           left: 50%;
           bottom: 48px;
-          width: 86px;
+          width: clamp(64px, 12vmin, 140px);
           height: 10px;
           transform: translateX(-50%);
           background: #0d2138;
@@ -1303,8 +1308,8 @@ export default function Home() {
 
           .planet {
             left: 50%;
-            width: min(var(--size), 44vw);
-            height: min(var(--size), 44vw);
+            width: clamp(120px, 38vmin, 240px);
+            height: clamp(120px, 38vmin, 240px);
           }
 
           .copy {
