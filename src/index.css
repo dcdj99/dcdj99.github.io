@@ -37,3 +37,24 @@
   .section-row { grid-template-columns: 1fr; gap: 0.75rem; }
   .project-summary { display: none; }
 }
+
+/* ── About: business card + quick info ── */
+.card-contact a { transition: color 0.15s ease; }
+.card-contact a:hover { color: #6fa2ff; text-decoration: underline; text-underline-offset: 3px; }
+
+.qr-button { transition: border-color 0.18s ease, color 0.18s ease; }
+.qr-button:hover { border-color: #6fa2ff; color: #6fa2ff; }
+
+@media (max-width: 640px) {
+  .card-identity {
+    gap: 1rem !important;
+  }
+  .quick-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qr-button { transition: none; }
+}
