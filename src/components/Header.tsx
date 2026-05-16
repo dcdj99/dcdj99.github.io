@@ -1,33 +1,71 @@
 import { Link, NavLink } from "react-router-dom";
 import { site } from "../data/site";
-import { useTheme } from "../lib/theme";
+import { ds } from "../lib/design";
+
+const NAV = [
+  { to: "/projects", label: "work" },
+  { to: "/about",    label: "about" },
+];
 
 export function Header() {
-  const { theme, toggle } = useTheme();
   return (
-    <header className="flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
-      <Link to="/" className="font-serif text-lg hover:text-accent dark:hover:text-accent-dark">
-        {site.shortName}
+    <header style={{
+      position: "sticky",
+      top: 0,
+      zIndex: 50,
+      background: "rgba(5, 9, 16, 0.88)",
+      backdropFilter: "blur(18px)",
+      WebkitBackdropFilter: "blur(18px)",
+      borderBottom: `1px solid ${ds.dim}`,
+      padding: "0 clamp(1.5rem,5vw,3rem)",
+      height: "52px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+    }}>
+      <Link
+        to="/"
+        style={{
+          fontFamily: ds.display,
+          fontSize: "0.78rem",
+          fontWeight: 800,
+          color: ds.text,
+          textDecoration: "none",
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
+        }}
+      >
+        {site.shortName} C.
       </Link>
-      <nav className="flex items-center gap-6 font-mono text-xs uppercase tracking-wider">
-        <NavLink to="/" end className={({ isActive }) => (isActive ? "text-accent dark:text-accent-dark" : "")}>
-          Home
-        </NavLink>
-        <NavLink to="/projects" className={({ isActive }) => (isActive ? "text-accent dark:text-accent-dark" : "")}>
-          Projects
-        </NavLink>
-        <NavLink to="/about" className={({ isActive }) => (isActive ? "text-accent dark:text-accent-dark" : "")}>
-          About
-        </NavLink>
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label="Toggle theme"
-          className="text-base"
-          title={`Theme: ${theme}`}
+      <nav style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+        {NAV.map(l => (
+          <NavLink
+            key={l.to}
+            to={l.to}
+            style={({ isActive }) => ({
+              fontFamily: ds.mono,
+              fontSize: "0.6rem",
+              letterSpacing: "0.04em",
+              color: isActive ? ds.text : ds.sub,
+              textDecoration: "none",
+              transition: "color 0.15s",
+            })}
+          >
+            {l.label}
+          </NavLink>
+        ))}
+        <a
+          href={`mailto:${site.email}`}
+          style={{
+            fontFamily: ds.mono,
+            fontSize: "0.6rem",
+            letterSpacing: "0.04em",
+            color: ds.sub,
+            textDecoration: "none",
+          }}
         >
-          {theme === "dark" ? "☼" : "☾"}
-        </button>
+          contact
+        </a>
       </nav>
     </header>
   );

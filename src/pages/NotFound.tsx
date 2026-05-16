@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import { ds } from "../lib/design";
 
 export default function NotFound() {
   return (
-    <section className="px-6 max-w-prose mx-auto py-24 text-center">
-      <p className="font-mono text-xs uppercase tracking-widest opacity-60">404</p>
-      <h1 className="mt-4 font-serif text-4xl">Page not found</h1>
-      <p className="mt-4 leading-relaxed">
-        That page doesn't exist — or it used to and got composted into something else.
+    <section style={{ maxWidth: "640px", margin: "0 auto", padding: "clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,3rem)", textAlign: "center" }}>
+      <p style={{ fontFamily: ds.mono, fontSize: "0.65rem", color: ds.sub, textTransform: "uppercase", letterSpacing: "0.16em", margin: 0 }}>404</p>
+      <h1 style={{ fontFamily: ds.display, fontWeight: 800, fontSize: "clamp(2.4rem,5vw,4rem)", color: ds.text, letterSpacing: "-0.02em", margin: "1rem 0 0" }}>Page not found</h1>
+      <p style={{ fontFamily: ds.body, color: ds.sub, lineHeight: 1.8, margin: "1rem auto 0", maxWidth: 420 }}>
+        That route is outside the current flight path.
       </p>
-      <p className="mt-8 font-mono text-sm">
-        <Link to="/" className="underline decoration-accent dark:decoration-accent-dark">go home →</Link>
+      <p style={{ marginTop: "2rem" }}>
+        <Link to="/" style={{ fontFamily: ds.mono, fontSize: "0.75rem", color: ds.accent, textDecoration: "none", letterSpacing: "0.04em" }}>go home →</Link>
       </p>
     </section>
   );

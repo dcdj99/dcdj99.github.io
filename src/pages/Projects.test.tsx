@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import Projects from "../pages/Projects";
+import Projects from "./Projects";
 
 test("Projects page lists at least one project", () => {
   render(
@@ -10,7 +10,7 @@ test("Projects page lists at least one project", () => {
     </MemoryRouter>
   );
   expect(screen.getByRole("heading", { name: /projects/i })).toBeInTheDocument();
-  expect(screen.getByText(/sample project/i)).toBeInTheDocument();
+  expect(screen.getByText(/silver online service/i)).toBeInTheDocument();
 });
 
 test("Tag filter narrows the list", async () => {
@@ -21,7 +21,7 @@ test("Tag filter narrows the list", async () => {
   );
   const allButton = screen.getByRole("button", { name: /^all$/ });
   expect(allButton).toBeInTheDocument();
-  const tagBtn = screen.getByRole("button", { name: /#react/i });
+  const tagBtn = screen.getByRole("button", { name: /#AI/i });
   await userEvent.click(tagBtn);
-  expect(screen.getByText(/sample project/i)).toBeInTheDocument();
+  expect(screen.getByText(/computer vision projects/i)).toBeInTheDocument();
 });

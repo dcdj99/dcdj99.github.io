@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 
 function renderAt(path: string) {
   return render(
-    <ThemeProvider initial="light">
+    <ThemeProvider initial="dark">
       <MemoryRouter initialEntries={[path]}>
         <Layout>
           <Routes>
@@ -26,7 +26,7 @@ function renderAt(path: string) {
 
 test("/ renders Home", () => {
   renderAt("/");
-  expect(screen.getByRole("heading", { level: 1, name: /darren/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
 });
 
 test("/projects renders Projects", () => {

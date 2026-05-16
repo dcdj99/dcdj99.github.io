@@ -1,13 +1,15 @@
 export const about = {
   intro:
-    "I'm Darren — I build software with care for the human on the other side of the screen. I'm drawn to projects where craft, design, and engineering meet.",
+    "Engineer and co-founder in Singapore. Currently building Spectrea — a composable knowledge platform for business teams.",
   paragraphs: [
-    "Add more bio paragraphs here. Anything goes — what you've worked on, what you care about, what you're curious about right now.",
+    "I work across software, AI, and hardware. Generalist by inclination — I'd rather sketch, ship, and iterate than spend a week debating frameworks.",
+    "Spectrea (formerly Matchwise) unifies documents, data, and context into one knowledge graph that humans and AI can reason over. Prior startup experience as co-founder and product manager.",
+    "Bachelor of Engineering in Engineering Product Development at SUTD (2020–2024). Minors in Computer Science and Design, Technology & Society. Exchanges at UCLA and Aalto.",
   ],
   skills: [
-    { group: "Languages", items: ["TypeScript", "Python", "Go"] },
-    { group: "Frontend", items: ["React", "Tailwind", "Vite"] },
-    { group: "Backend", items: ["Node.js", "PostgreSQL"] },
-    { group: "Tools", items: ["Git", "Linux", "Figma"] },
+    { group: "AI / Data", items: ["Knowledge graphs", "Computer vision", "Python", "Neo4j", "pgvector"] },
+    { group: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind"] },
+    { group: "Mobile / Hardware", items: ["Flutter", "Robotics", "3D printing"] },
+    { group: "Practice", items: ["Product", "Team building", "Figma"] },
   ],
 };

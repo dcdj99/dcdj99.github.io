@@ -3,14 +3,37 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: theme('fontFamily.serif');
-  }
+  html { color-scheme: dark; }
   body {
-    @apply bg-paper text-ink dark:bg-paper-dark dark:text-ink-dark;
-    @apply antialiased;
+    background: #050910;
+    color: #f4f8ff;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  code, .font-mono {
-    font-family: theme('fontFamily.mono');
-  }
+}
+
+/* ── Marquee ── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+/* ── Responsive split layout ── */
+.split-desktop { display: grid; }
+@media (min-width: 768px) {
+  .split-desktop { grid-template-columns: 1fr 1fr; }
+  .split-desktop > *:first-child { border-right: 1px solid #1b2a44; }
+}
+
+/* ── About two-col sections ── */
+.section-row { display: grid; grid-template-columns: 9rem 1fr; gap: 2rem; }
+@media (max-width: 640px) {
+  .section-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .project-summary { display: none; }
 }

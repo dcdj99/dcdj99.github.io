@@ -1,16 +1,13 @@
 import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { PaperGrain } from "./PaperGrain";
-import { CustomCursor } from "./CustomCursor";
+import { ds } from "../lib/design";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col relative">
-      <PaperGrain />
-      <CustomCursor />
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: ds.bg, color: ds.text }}>
       <Header />
-      <main className="flex-1 relative z-[2]">{children}</main>
+      <main style={{ flex: 1 }}>{children}</main>
       <Footer />
     </div>
   );

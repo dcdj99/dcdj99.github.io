@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Home from "../pages/Home";
+import Home from "./Home";
 
-test("Home shows hero, now block, and featured section", () => {
+test("Home shows headline and featured work", () => {
   render(
     <MemoryRouter>
       <Home />
     </MemoryRouter>
   );
   expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
-  expect(screen.getByText(/^now ·/i)).toBeInTheDocument();
-  expect(screen.getByRole("heading", { name: /featured/i })).toBeInTheDocument();
+  expect(screen.getAllByRole("link", { name: /^work$/i }).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/spectrea/i).length).toBeGreaterThan(0);
 });

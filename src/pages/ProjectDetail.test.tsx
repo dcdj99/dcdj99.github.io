@@ -13,8 +13,8 @@ function renderAt(path: string) {
 }
 
 test("renders the project when slug matches", () => {
-  renderAt("/projects/sample-project");
-  expect(screen.getByRole("heading", { name: /sample project/i })).toBeInTheDocument();
+  renderAt("/projects/silver-online-service");
+  expect(screen.getByRole("heading", { name: /silver online service/i })).toBeInTheDocument();
 });
 
 test("renders not-found state when slug does not match", () => {
