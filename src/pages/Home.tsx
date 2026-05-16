@@ -593,22 +593,30 @@ export default function Home() {
           opacity: 1,
           filter: "blur(0px)",
           ease: "sine.inOut",
+          immediateRender: false,
           scrollTrigger: trigger({
             start: `+=${destination.copyStart - 650}`,
             end: "+=800",
             scrub: 1,
+            invalidateOnRefresh: true,
           }),
         });
 
-        gsap.to(`.planet-${destination.id}`, {
+        gsap.fromTo(`.planet-${destination.id}`, {
+          scale: 1,
+          opacity: 1,
+          filter: "blur(0px)",
+        }, {
           scale: 0.72,
           opacity: 0.2,
           filter: "blur(2px)",
           ease: "sine.inOut",
+          immediateRender: false,
           scrollTrigger: trigger({
             start: `+=${destination.copyEnd - 100}`,
             end: "+=750",
             scrub: 1,
+            invalidateOnRefresh: true,
           }),
         });
 
