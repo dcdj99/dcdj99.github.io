@@ -503,26 +503,24 @@ export default function Home() {
         scrollTrigger: trigger({ end: `+=${SCROLL_TOTAL}`, scrub: true }),
       });
 
-      if (!isTouch) {
-        ScrollTrigger.create({
-          ...trigger({ end: `+=${SCROLL_TOTAL}` }),
-          snap: {
-            snapTo: (value) => {
-              const points = [0, 0.25, 0.5, 0.75, 1.0];
-              const restRadius = 0.045;
-              for (const p of points) {
-                if (Math.abs(value - p) <= restRadius) return value;
-              }
-              return points.reduce((a, b) =>
-                Math.abs(b - value) < Math.abs(a - value) ? b : a
-              );
-            },
-            duration: { min: 0.3, max: 0.6 },
-            ease: "power2.inOut",
-            delay: 0.1,
+      ScrollTrigger.create({
+        ...trigger({ end: `+=${SCROLL_TOTAL}` }),
+        snap: {
+          snapTo: (value) => {
+            const points = [0, 0.25, 0.5, 0.75, 1.0];
+            const restRadius = 0.045;
+            for (const p of points) {
+              if (Math.abs(value - p) <= restRadius) return value;
+            }
+            return points.reduce((a, b) =>
+              Math.abs(b - value) < Math.abs(a - value) ? b : a
+            );
           },
-        });
-      }
+          duration: { min: 0.3, max: 0.6 },
+          ease: "power2.inOut",
+          delay: isTouch ? 0.18 : 0.1,
+        },
+      });
 
       gsap.fromTo(".lower-layer", {
         y: 0,
