@@ -46,15 +46,11 @@
 .qr-button:hover { border-color: #6fa2ff; color: #6fa2ff; }
 
 @media (max-width: 640px) {
-  .card-identity {
-    gap: 1rem !important;
-  }
-  .quick-row {
-    grid-template-columns: 1fr !important;
-    gap: 0.5rem !important;
-  }
+  .card-identity { grid-template-columns: 1fr !important; }
+  .quick-row { grid-template-columns: 1fr !important; gap: 0.5rem !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .qr-button { transition: none; }
+  .card-contact a { transition: none; }
 }

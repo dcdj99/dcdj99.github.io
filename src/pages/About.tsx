@@ -103,42 +103,23 @@ function BusinessCard() {
   const [qrOpen, setQrOpen] = useState(false);
 
   return (
-    <div style={{ maxWidth: 560, margin: "0 auto 4rem" }}>
+    <div style={{ maxWidth: 560, width: "100%", margin: "0 auto 4rem" }}>
       <article
-        className="business-card-face"
         aria-label="Business card"
         style={{
-          position: "relative",
           border: `1px solid ${ds.dim}`,
-          borderRadius: "12px",
+          borderRadius: "10px",
           padding: "clamp(1.75rem, 4vw, 2.5rem)",
-          background: `
-            radial-gradient(120% 100% at 100% 0%, rgba(111,162,255,0.06), transparent 55%),
-            linear-gradient(180deg, ${ds.surface} 0%, #060c17 100%)
-          `,
-          boxShadow:
-            "0 30px 60px -32px rgba(0,0,0,0.75), 0 1px 0 rgba(255,255,255,0.04) inset",
-          overflow: "hidden",
+          background: ds.surface,
+          boxShadow: "0 20px 50px -20px rgba(0,0,0,0.7)",
         }}
       >
-        <span
-          aria-hidden
-          style={{
-            position: "absolute",
-            top: 0,
-            left: "1.5rem",
-            right: "1.5rem",
-            height: 1,
-            background: `linear-gradient(90deg, transparent, ${ds.accent}66, transparent)`,
-          }}
-        />
-
         <div
           className="card-identity"
           style={{
             display: "grid",
             gridTemplateColumns: "auto 1fr",
-            gap: "clamp(1.25rem, 3vw, 1.75rem)",
+            gap: "clamp(1.25rem, 3vw, 2rem)",
             alignItems: "center",
           }}
         >
@@ -147,74 +128,49 @@ function BusinessCard() {
             alt="Darren Chow"
             loading="lazy"
             style={{
-              width: "clamp(84px, 11vw, 104px)",
-              height: "clamp(84px, 11vw, 104px)",
+              width: "clamp(80px, 12vw, 108px)",
+              height: "clamp(80px, 12vw, 108px)",
               borderRadius: "50%",
               objectFit: "cover",
               border: `1px solid ${ds.dim}`,
-              flexShrink: 0,
               display: "block",
+              flexShrink: 0,
             }}
           />
-
           <div style={{ minWidth: 0 }}>
-            <div
-              style={{
-                fontFamily: ds.display,
-                fontWeight: 500,
-                fontSize: "clamp(1.6rem, 3.4vw, 2.1rem)",
-                color: ds.text,
-                letterSpacing: "-.02em",
-                lineHeight: 1.1,
-                marginBottom: "0.5rem",
-              }}
-            >
+            <div style={{
+              fontFamily: ds.display, fontWeight: 500,
+              fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
+              color: ds.text, letterSpacing: "-.02em",
+              lineHeight: 1.1, marginBottom: "0.45rem",
+            }}>
               {about.card.name}
             </div>
-            <div
-              style={{
-                fontFamily: ds.body,
-                fontWeight: 400,
-                fontSize: "1rem",
-                color: ds.text,
-                opacity: 0.88,
-                marginBottom: "0.3rem",
-              }}
-            >
+            <div style={{
+              fontFamily: ds.body, fontWeight: 400,
+              fontSize: "1rem", color: ds.text,
+              opacity: 0.85, marginBottom: "0.3rem",
+            }}>
               {about.card.roles.join(" · ")}
             </div>
-            <div
-              style={{
-                fontFamily: ds.body,
-                fontWeight: 400,
-                fontSize: "0.9rem",
-                color: ds.sub,
-              }}
-            >
+            <div style={{
+              fontFamily: ds.body, fontWeight: 400,
+              fontSize: "0.9rem", color: ds.sub,
+            }}>
               {about.card.location}
             </div>
           </div>
         </div>
 
-        <hr
-          style={{
-            border: 0,
-            borderTop: `1px solid ${ds.dim}`,
-            margin: "1.75rem 0 1.5rem",
-          }}
-        />
+        <hr style={{
+          border: 0, borderTop: `1px solid ${ds.dim}`,
+          margin: "1.75rem 0 1.5rem",
+        }} />
 
-        <ul
-          className="card-contact"
-          style={{
-            listStyle: "none",
-            margin: 0,
-            padding: 0,
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.65rem",
-          }}
-        >
+        <ul className="card-contact" style={{
+          listStyle: "none", margin: 0, padding: 0,
+          display: "flex", flexDirection: "column", gap: "0.6rem",
+        }}>
           {links.map(l => (
             <li key={l.label} style={{ minWidth: 0 }}>
               <a
@@ -222,14 +178,10 @@ function BusinessCard() {
                 target={l.href?.startsWith("http") ? "_blank" : undefined}
                 rel={l.href?.startsWith("http") ? "noreferrer" : undefined}
                 style={{
-                  fontFamily: ds.body,
-                  fontSize: "0.95rem",
-                  color: ds.text,
-                  textDecoration: "none",
-                  display: "block",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
+                  fontFamily: ds.body, fontSize: "0.95rem",
+                  color: ds.text, textDecoration: "none",
+                  display: "block", whiteSpace: "nowrap",
+                  overflow: "hidden", textOverflow: "ellipsis",
                 }}
               >
                 {l.label}
